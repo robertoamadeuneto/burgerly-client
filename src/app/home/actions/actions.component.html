@@ -1,9 +1,9 @@
 <div class="ml-3">
-  <button type="button" class="btn btn-primary" (click)="enableDisablePanel()" [disabled]="active">
+  <button type="button" class="btn btn-primary" (click)="createCart()" [disabled]="active">
     <i class="fa fa-plus" aria-hidden="true"></i>
     Novo Pedido
   </button>
-  <button type="button" class="btn btn-success ml-2" (click)="enableDisablePanel()" [disabled]="!active">
+  <button type="button" class="btn btn-success ml-2" (click)="finishCart()" [disabled]="!active">
     <i class="fa fa-check" aria-hidden="true"></i>
     Finalizar Pedido
   </button>

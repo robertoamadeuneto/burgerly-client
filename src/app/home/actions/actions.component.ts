@@ -10,7 +10,7 @@ import { BurgerService } from '../panel/burger/burger.service';
   styleUrls: ['./actions.component.css']
 })
 export class ActionsComponent implements OnInit {
-  
+
   active = false;
 
   constructor(private actionsService: ActionsService,
@@ -21,7 +21,7 @@ export class ActionsComponent implements OnInit {
   ngOnInit() {
   }
 
-  enableDisablePanel() {
+  createCart() {
     this.active = !this.active;
     this.panelService.enableDisablePanel();
 
@@ -34,7 +34,11 @@ export class ActionsComponent implements OnInit {
 
   cancelCart() {
     this.active = false;
-    this.cartService.delete(this.cartService.cart['id']).subscribe();
-    this.burgerService.cartEmitter.emit({id: null, price: null, cartBurgers: null});
+    this.cartService.delete(this.cartService.cart['id']).subscribe(data => this.burgerService.cartEmitter.emit({ id: null, price: null, cartBurgers: null }));
+  }
+
+  finishCart() {
+    this.active = false;
+    this.cartService.finish(this.cartService.cart).subscribe(data => this.burgerService.cartEmitter.emit({ id: null, price: null, cartBurgers: null }));
   }
 }
