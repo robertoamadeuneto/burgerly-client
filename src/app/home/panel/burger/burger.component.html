@@ -1,0 +1,4 @@
+<ul class="list-group mt-2">
+  <li class="list-group-item text-primary" style="background-color: #efefef">Lanches</li>
+  <li *ngFor="let burger of burgers" (click)="addToCart(burger)" class="list-group-item">{{burger.description}}</li>
+</ul>

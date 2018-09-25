@@ -1,0 +1,4 @@
+<ul class="list-group mt-2">
+  <li class="list-group-item text-primary" style="background-color: #efefef">Adicionais</li>
+  <li *ngFor="let ingredient of ingredients" class="list-group-item">{{ingredient.description}} - R${{ingredient.price}}</li>
+</ul>

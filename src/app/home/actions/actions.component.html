@@ -1,0 +1,14 @@
+<div class="ml-3">
+  <button type="button" class="btn btn-primary" (click)="enableDisablePanel()" [disabled]="active">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    Novo Pedido
+  </button>
+  <button type="button" class="btn btn-success ml-2" (click)="enableDisablePanel()" [disabled]="!active">
+    <i class="fa fa-check" aria-hidden="true"></i>
+    Finalizar Pedido
+  </button>
+  <button type="button" class="btn btn-danger ml-2" (click)="enableDisablePanel()" [disabled]="!active">
+    <i class="fa fa-ban" aria-hidden="true"></i>
+    Cancelar Pedido
+  </button>
+</div>
