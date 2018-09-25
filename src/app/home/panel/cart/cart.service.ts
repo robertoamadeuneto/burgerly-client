@@ -8,6 +8,8 @@ const API_CARTS = 'http://localhost:8080/api/carts/';
 export class CartService {
 
     cart: Cart[];
+    cartBurger: any;
+    selectedLi: number;
 
     constructor(private httpClient: HttpClient) {
     }
@@ -24,11 +26,11 @@ export class CartService {
         });
     }
 
-    cancel() {
-        this.cart = null;
+    findById(id: number) {
+        return this.httpClient.get<Cart[]>(API_CARTS + '/' + id);
     }
 
-    setPrice(price: number) {
-        //this.cartComponent.setPrice(price);
+    delete(id: number) {
+        return this.httpClient.delete<any>(API_CARTS + '/' + id);
     }
 }

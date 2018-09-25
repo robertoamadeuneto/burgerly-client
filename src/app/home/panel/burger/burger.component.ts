@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter } from '@angular/core';
 import { BurgerService } from './burger.service';
 import { Burger } from './burger';
 import { CartService } from '../cart/cart.service';
@@ -16,12 +16,12 @@ export class BurgerComponent implements OnInit {
     private cartService: CartService) { }
 
   ngOnInit() {
-    this.burgerService.findAll().subscribe(data => this.burgers = data);
+    this.burgerService.findAll().subscribe(data => {
+      this.burgers = data
+    });
   }
 
   addToCart(burger: Burger) {
-    this.burgerService.addToCart(burger).subscribe(data => {
-      //this.cartService.setPrice(data['cart'].price); servindo pra nada
-    });
+    this.burgerService.addToCart(burger);
   }
 }

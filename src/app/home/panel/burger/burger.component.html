@@ -1,4 +1,10 @@
 <ul class="list-group mt-2">
   <li class="list-group-item text-primary" style="background-color: #efefef">Lanches</li>
-  <li *ngFor="let burger of burgers" (click)="addToCart(burger)" class="list-group-item">{{burger.description}}</li>
+  <li *ngFor="let burger of burgers" (click)="addToCart(burger)" class="list-group-item" style="cursor: pointer;">
+    {{burger.description}} <label class="float-right">{{burger.price | currency:'BRL':true:'1.2-2'}}</label>
+    <br><br>
+    <label class="ml-1" *ngFor="let burgerIngredient of burger.burgerIngredients" style="display: block; font-size: 10pt;">
+      {{burgerIngredient.ingredient.description}}
+    </label>
+  </li>
 </ul>

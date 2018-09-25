@@ -1,8 +1,22 @@
 <ul class="list-group mt-2">
-  <li class="list-group-item text-primary" style="background-color: #efefef"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <li class="list-group-item text-primary" style="background-color: #efefef">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
     Carrinho
   </li>
+  <li *ngFor="let cartBurger of cart.cartBurgers; let i = index" class="list-group-item cart-burger" (click)="selectCartBurger(cartBurger, i)" style="cursor: pointer;">
+    {{cartBurger.burger.description}} <label class="float-right">{{cartBurger.price | currency:'BRL':true:'1.2-2'}}</label>
+    <br><br>
+      <label class="ml-1" *ngFor="let cartBurgerIngredient of cartBurger.cartBurgerIngredients" style="display: block; font-size: 10pt;">
+        {{cartBurgerIngredient.ingredient.description}} <i class="fa fa-times float-right" style="color: red;" aria-hidden="true" (click)="removeFromCartBurger(cartBurgerIngredient)"></i>
+      </label>
+    <br>
+    <div class="float-right">
+      <button type="button" class="btn btn-danger ml-2" (click)="removeFromCart(cartBurger)">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </div>
+  </li>
   <li class="list-group-item text-primary" style="background-color: #efefef">
-    Total: R$ {{price}}
+    Total: {{cart.price | currency:'BRL':true:'1.2-2'}}
   </li>
 </ul>
