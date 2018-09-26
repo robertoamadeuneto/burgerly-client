@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { BurgerComponent } from './burger/burger.component';
 
 @Component({

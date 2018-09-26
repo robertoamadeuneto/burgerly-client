@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-const API = 'http://localhost:8080';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,10 @@ const API = 'http://localhost:8080';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  title = 'Burgerly';
+
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle(this.title);
+  }
 }

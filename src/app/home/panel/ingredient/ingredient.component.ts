@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { IngredientService } from './ingredient.service';
 import { Ingredient } from './ingredient';
 import { CartService } from '../cart/cart.service';
 import { BurgerService } from '../burger/burger.service';
+import { CartBurgerIngredient } from '../cart-burger-ingredient/cart-burger-ingredient';
 
 @Component({
   selector: 'app-ingredient',
@@ -23,15 +25,12 @@ export class IngredientComponent implements OnInit {
 
   addToCartBurger(ingredient: Ingredient) {
     if (this.cartService.cartBurger != null) {
-      let cartBurgerIngredient = {
-        cartBurger: this.cartService.cartBurger,
-        ingredient: {
-          id: ingredient.id
-        }
-      };
+      let cartBurgerIngredient = new CartBurgerIngredient();
+      cartBurgerIngredient.cartBurger = this.cartService.cartBurger;
+      cartBurgerIngredient.ingredient = ingredient;
 
       this.ingredientService.addToCartBurger(cartBurgerIngredient).subscribe(() => {
-        this.cartService.findById(this.cartService.cart['id']).subscribe(cart => this.burgerService.cartEmitter.emit(cart));
+        this.cartService.findById(this.cartService.cart['id']).subscribe(cart => this.cartService.cartEmitter.emit(cart));
       });
     }
   }

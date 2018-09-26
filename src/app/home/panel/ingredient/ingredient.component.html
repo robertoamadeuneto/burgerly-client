@@ -1,6 +1,6 @@
 <ul class="list-group mt-2">
   <li class="list-group-item text-primary" style="background-color: #efefef">Adicionais</li>
   <li *ngFor="let ingredient of ingredients" (click)="addToCartBurger(ingredient)" class="list-group-item" style="cursor: pointer;">
-    {{ingredient.description}} <label class="float-right">{{ingredient.price | currency:'BRL':true:'1.2-2'}}</label>
+    {{ingredient.description}} <label class="float-right">{{ingredient.price | currency:'BRL':symbol:'1.2-2'}}</label>
   </li>
 </ul>
